@@ -6,7 +6,7 @@ const writeFishes = (arrayOfFishes)=>{
     let domString ='';
     arrayOfFishes.forEach((fish) => {
         domString += `
-        <div class="${fish.onSale ? 'on-sale' : ''}on-sale fish card col-md-6 col-md-offset-3">
+        <div class="${fish.onSale ? 'on-sale' : ''} fish card col-md-6 col-md-offset-3">
                 <div class="thumbnail">
                     <img src="${fish.imageSoure}"
                         alt="" width="40%">
@@ -27,7 +27,8 @@ const writeFishes = (arrayOfFishes)=>{
     $('#available').append(domString);
               // or
     // $(domString).appendTo('#available');
-    // bindEvents();
+ //    bindEvents();
+    
 }
 // Event Listener for add to Basket
 // const bindEvents = ()=> {
@@ -44,6 +45,8 @@ const writeFishes = (arrayOfFishes)=>{
 //    })
 //     });
 // }
+
+
 
 // Dynamically listens for events that happen on buttons with a class add
 $('body').on('click', 'button.add', (e) => {
@@ -63,8 +66,14 @@ $('body').on('click', 'button.add', (e) => {
 
 // Dynamically listens for events that happen on buttons with a class add
 // $("body").on('click', 'button.add', () =>{
-//     
+    
 // });
+
+
+$("#show-sale").click(()=>{
+    // all divs with the class fish, give me just the ones WITHOUT the calss 'on-sale' and HIDE
+    $(".fish").not(".on-sale").toggle();
+});
 
 // load Fish
 $.get('../db/fishes.json')
