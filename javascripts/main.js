@@ -1,10 +1,12 @@
 const discount = 0.12;
 
 const applySale = ()=> {
+    // each fish returns DOM object 
     $(".on-sale").each((i,fish)=>{
+        // $(fish) to turn it into fish object
         const fullPrice = $(fish).find('.price');
         // console.log(fullPrice.html());
-        const newPrice = (parseInt(fullPrice.html())) * (1 - discount)
+        const newPrice = (parseInt(fullPrice.html()) * (1 - discount)).toFixed(2);
         //console.log(newPrice);
         fullPrice.html(newPrice);
     })
