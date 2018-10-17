@@ -27,7 +27,26 @@ const writeFishes = (arrayOfFishes)=>{
     $('#available').append(domString);
               // or
     // $(domString).appendTo('#available');
+    bindEvents();
 }
+// Event Listener for add to Basket
+const bindEvents = ()=> {
+    $(".add").on('click', (e) =>{
+        // what is the div that has the fish
+        const fishToMove = $(e.target).closest('.fish');
+        // move it to 'snagged' div
+        $("#snagged").append(fishToMove);
+        // button text => remove from Basket | change class - "add" + "remove"
+        $(e.target).text('Remove from Basket').addClass('remove').removeClass('add');
+        
+        
+    });
+}
+
+// Dynamically listens for events that happen on buttons with a class add
+// $("body").on('click', 'button.add', () =>{
+//     
+// });
 
 // load Fish
 $.get('../db/fishes.json')
@@ -39,3 +58,4 @@ $.get('../db/fishes.json')
      console.error(error);
  });
 
+// Event Listener
